@@ -1,9 +1,11 @@
 
-const enrtyCards = (title, date, content) =>{
-    return `<h2>${title}</h2>
-            <h5>${date}</h5>
-            <p>${content}</p>
-            <button id="delete-button">Delete Enrty</button>`;
+const entryCards = (entryObject) =>{
+    return `<div id="entry-id--${entryObject.id}">
+            <h2>${entryObject.title}</h2>
+            <h5>${entryObject.date}</h5>
+            <p>${entryObject.content}</p>
+            <button id="delete-button">Delete Enrty</button>
+            </div>`;
 };
 
-module.exports = enrtyCards;
+module.exports = entryCards;

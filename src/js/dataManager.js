@@ -1,5 +1,4 @@
 
-
 function saveJournalEntry(entry) {
     return fetch("http://localhost:8088/entries",{
         method: "POST",
@@ -11,4 +10,17 @@ function saveJournalEntry(entry) {
     .then(response => response.json());
 }
 
-module.exports = saveJournalEntry;
+// in this function we query the API for the data in desending order 
+function getEntries() {
+    return fetch("http://localhost:8088/entries?_order=desc&_sort=date")
+    .then(result => result.json())
+}
+
+function deleteEntry(entryID) {
+    return fetch(`http://localhost:8088/entries/${entryID}`, {
+        method: "DELETE"
+    })
+    .then(response => response.json());
+}
+
+module.exports = {saveJournalEntry, getEntries, deleteEntry};
