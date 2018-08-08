@@ -12,7 +12,7 @@ function saveJournalEntry(entry) {
 
 // in this function we query the API for the data in desending order 
 function getEntries() {
-    return fetch("http://localhost:8088/entries?_order=desc&_sort=date")
+    return fetch("http://localhost:8088/entries?_order=desc&_sort=id")
     .then(result => result.json())
 }
 
@@ -23,4 +23,16 @@ function deleteEntry(entryID) {
     .then(response => response.json());
 }
 
-module.exports = {saveJournalEntry, getEntries, deleteEntry};
+
+function replaceEntry(entryToEditID, entry) {
+    return fetch(`http://localhost:8088/entries/${entryToEditID}`,{
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(entry)
+    })
+    .then(response => response.json());
+}
+
+module.exports = {saveJournalEntry, getEntries, deleteEntry, replaceEntry};

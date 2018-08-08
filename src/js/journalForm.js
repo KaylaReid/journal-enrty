@@ -10,8 +10,8 @@ const formManager = Object.create(null, {
     makeForm: {
         value: () => {
             return `<h2>Make a New Entry</h2>
-            <input type="text" placeholder="Title of Entry" id="entryTitle" required>
-            <textarea placeholder="What's on your mind?" id="entryContent"></textarea>
+            <input required type="text" placeholder="Title of Entry" id="entryTitle">
+            <textarea required placeholder="What's on your mind?" id="entryContent"></textarea>
             <button id="add-entry-btn">Add Your Thoughts</button>`;
         }
     }
