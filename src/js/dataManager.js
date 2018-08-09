@@ -1,4 +1,3 @@
-
 function saveJournalEntry(entry) {
     return fetch("http://localhost:8088/entries",{
         method: "POST",
@@ -22,7 +21,6 @@ function deleteEntry(entryID) {
     })
     .then(response => response.json());
 }
-
 
 function replaceEntry(entryToEditID, entry) {
     return fetch(`http://localhost:8088/entries/${entryToEditID}`,{

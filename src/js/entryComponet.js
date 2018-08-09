@@ -1,4 +1,3 @@
-
 const entryCards = (entryObject) =>{
     return `<div id="entry-id--${entryObject.id}">
             <h2 id="title--${entryObject.id}">${entryObject.title}</h2>

@@ -1,4 +1,3 @@
-
 function saveEditedEntry(){
     let newEntry = {
         title: document.querySelector("#edited-title").value,
@@ -7,7 +6,6 @@ function saveEditedEntry(){
     };
     return newEntry
 }
-
 
 function editEntry(ID) {
     document.querySelector(`.edit-button--${ID}`).remove();
