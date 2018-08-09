@@ -4,8 +4,11 @@ const formManager = require("./journalForm.js");
 const dataManager = require("./dataManager");
 const enrtyCards = require("./entryComponet");
 const editManager = require("./editEntry");
+const $ = require("jquery");
 
 document.querySelector(".form").innerHTML = formManager.makeForm();
+// $(".form").html = formManager.makeForm();
+
 
 const saveButton = document.querySelector("#add-entry-btn");
 saveButton.addEventListener("click", () =>{
@@ -18,7 +21,7 @@ saveButton.addEventListener("click", () =>{
         date: Date(Date.now())
     };
     if(document.querySelector("#entryTitle").value === "" || document.querySelector("#entryContent").value === ""){
-        alert("Please fill out fields");
+        alert("Please make an enrty before saving!");
     } else {
         // Post to API
         dataManager.saveJournalEntry(newEntry).then((result) =>{
