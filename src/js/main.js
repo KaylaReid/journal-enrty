@@ -6,35 +6,27 @@ const enrtyCards = require("./entryComponet");
 const editManager = require("./editEntry");
 const $ = require("jquery");
 
-document.querySelector(".form").innerHTML = formManager.makeForm();
-// $(".form").html = formManager.makeForm();
+$(".form").html(formManager.makeForm());
 
-
-const saveButton = document.querySelector("#add-entry-btn");
-saveButton.addEventListener("click", () =>{
-    // get form field values 
-    // create object out of it
-    // add timestamp
-    const newEntry = {
-        title: document.querySelector("#entryTitle").value,
-        content: document.querySelector("#entryContent").value,
+const $saveButton = $("#add-entry-btn");
+$saveButton.click(() =>{
+    const $newEntry = {
+        title: $("#entryTitle").val(),
+        content: $("#entryContent").val(),
         date: Date(Date.now())
     };
-    if(document.querySelector("#entryTitle").value === "" || document.querySelector("#entryContent").value === ""){
+    if($("#entryTitle").val() === "" || $("#entryContent").val() === ""){
         alert("Please make an enrty before saving!");
     } else {
         // Post to API
-        dataManager.saveJournalEntry(newEntry).then((result) =>{
+        dataManager.saveJournalEntry($newEntry).then((result) =>{
             // clear the form fields 
             formManager.clearForm();
-            
-            // write to dom new entry
-            document.querySelector(".entry-container").innerHTML = ""
+            $(".entry-container").html("")
 
             dataManager.getEntries().then(result =>{
                 result.forEach(item =>{
-                    // console.log(item);
-                    document.querySelector(".entry-container").innerHTML += enrtyCards(item)
+                    $(".entry-container").append(enrtyCards(item))
                 })
             });
         });
@@ -43,14 +35,11 @@ saveButton.addEventListener("click", () =>{
 
 dataManager.getEntries().then(result =>{
     result.forEach(item =>{
-        // console.log(item);
-        document.querySelector(".entry-container").innerHTML += enrtyCards(item)
-       
-
+        $(".entry-container").append(enrtyCards(item))
     })
 });
 
-document.querySelector(".entry-container").addEventListener("click", (e) =>{
+$(".entry-container").click((e) =>{
     if(e.target.className.includes("delete-button")){
         let deleteId = e.target.className.split("--")[1]
         dataManager.deleteEntry(deleteId).then(() => {
@@ -66,10 +55,10 @@ document.querySelector(".entry-container").addEventListener("click", (e) =>{
         let id = e.target.id.split("--")[1];
         dataManager.replaceEntry(id, entry)
         .then(() => {
-            document.querySelector(".entry-container").innerHTML = "";
+            $(".entry-container").html("");
             dataManager.getEntries().then(result =>{
                 result.forEach(item =>{
-                    document.querySelector(".entry-container").innerHTML += enrtyCards(item)
+                    $(".entry-container").append(enrtyCards(item))
                 });
             });
         }); 
