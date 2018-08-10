@@ -1,0 +1,32 @@
+
+.form-header {
+    display: flex;
+    justify-content: center;
+}
+.form-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: 2em auto;
+
+}
+.form-div input {
+    margin: 1em auto;
+    width: 95%;
+    padding: 1em;
+}
+.form-div textarea {
+    margin-top: 3em;
+    height: 200px;
+    display: block;
+    width: 90%;
+    padding: 1em;
+    margin: 1em auto;
+}
+.form-div button {
+    margin-top: .5em;
+    display: block;
+    margin: 1em auto;
+    width: 20%;
+}

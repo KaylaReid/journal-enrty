@@ -1,0 +1,10 @@
+:root {
+    --border-style: 2px dimgrey solid;
+}
+
+.entry-card {
+    border: var(--border-style);
+    margin: 1em;
+    padding: .5em;
+
+}
